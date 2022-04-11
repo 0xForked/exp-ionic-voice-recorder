@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Voice Recorder Impl
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,29 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Voice Recorder Impl</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-list class="ion-padding" *ngIf="voices?.length > 0">
+    <ion-item *ngFor="let item of voices">
+      <audio controls>
+        <source [src]="item | safeHTML" />
+      </audio>
+    </ion-item>
+  </ion-list>
+
+  <div id="container" *ngIf="voices?.length === 0">
+    <strong> No Result </strong>
+    <p>There is no recorded voices . . .</p>
   </div>
+
 </ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-text *ngIf="!recording">Press and hold to record</ion-text>
+  <ion-text *ngIf="recording">{{ durationDisplay }}</ion-text>
+  <ion-button color="primary" fill="outline" shape="round" size="small" #recordButton>
+    <ion-icon slot="icon-only" name="mic-outline"></ion-icon>
+  </ion-button>
+</ion-footer>

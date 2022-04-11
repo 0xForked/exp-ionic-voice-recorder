@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "exp-ionic-voice-recorder",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
