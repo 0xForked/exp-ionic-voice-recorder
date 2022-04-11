@@ -1,0 +1,7 @@
+{
+  "name": "exp-ionic-voice-recorder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
